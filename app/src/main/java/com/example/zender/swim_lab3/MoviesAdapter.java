@@ -61,25 +61,36 @@ public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
         RecyclerView.ViewHolder viewHolder;
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        switch (viewType){
-            case LEFT:
-                View vLeft = inflater.inflate(R.layout.movie_list_row, parent, false);
-                viewHolder = new MyViewHolderLTR(vLeft);
-                break;
-            case RIGHT:
-                View vRight = inflater.inflate(R.layout.movie_list_row, parent, false);
-                viewHolder = new MyViewHolderRTL(vRight);
-                break;
-            default:
-                viewHolder = null;
-                break;
+        if (viewType == LEFT){
+            View vLeft = inflater.inflate(R.layout.movie_list_row, parent, false);
+            viewHolder = new MyViewHolderLTR(vLeft);
+        }
+        else {
+            View vRight = inflater.inflate(R.layout.movie_list_row_rev, parent, false);
+            viewHolder = new MyViewHolderRTL(vRight);
         }
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position){
-        //THINGS
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position){ //PASKUDNE! Zrób coś z tym bo wiocha
+
+        if (holder.getItemViewType() == LEFT){
+            MyViewHolderLTR vhLeft = (MyViewHolderLTR) holder;
+            Movie movie = moviesList.get(position);
+            vhLeft.title.setText(movie.getTitle());
+            vhLeft.genre.setText(movie.getGenre());
+            vhLeft.year.setText(movie.getYear());
+            vhLeft.poster.setImageResource(movie.getPosterID());
+        }
+        else if (holder.getItemViewType() == RIGHT){
+            MyViewHolderRTL vhRight = (MyViewHolderRTL) holder;
+            Movie movie = moviesList.get(position);
+            vhRight.title.setText(movie.getTitle());
+            vhRight.genre.setText(movie.getGenre());
+            vhRight.year.setText(movie.getYear());
+            vhRight.poster.setImageResource(movie.getPosterID());
+        }
 
 
     }

@@ -25,18 +25,20 @@
         android:layout_alignParentTop="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@id/screen"/>
+        />
 
     <TextView
         android:id="@+id/genre"
         android:layout_below="@id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@id/screen"/>
+        />
     <TextView
         android:id="@+id/year"
         android:textColor="@color/year"
         android:layout_width="wrap_content"
         android:layout_alignParentEnd="false"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/screen"
+        android:paddingRight="10dp"/>
 </RelativeLayout>
