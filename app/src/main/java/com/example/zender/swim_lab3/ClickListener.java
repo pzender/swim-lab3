@@ -3,13 +3,10 @@ package com.example.zender.swim_lab3;
 import android.view.View;
 
 /**
- * Created by Przemek on 2017-04-24.
+ * Created by pzend on 24.04.2017.
  */
 
-public interface ClickListener {
-        void onClick(View view, int position);
-
-        void onLongClick(View view, int position);
-    }
-
-
+interface ClickListener {
+    public void onClick(View view, int position);
+    public void onLongClick(View view, int position) ;
+}

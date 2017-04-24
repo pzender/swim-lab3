@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.zender.swim_lab3.MovieDetailsActivity"
+    tools:layout_editor_absoluteY="81dp"
+    tools:layout_editor_absoluteX="0dp">
+
+    <ImageView
+        android:src="@drawable/forceawakens"
+        android:id="@+id/imageView"
+        android:layout_width="350dp"
+        android:layout_height="232dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintVertical_bias="0.31" />
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/guideline2"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.52" />
+
+    <TextView
+        android:textColor="#222222"
+        android:background="#DDDDDD"
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Title"
+        app:layout_constraintLeft_toLeftOf="@+id/imageView"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        android:textSize="32sp"/>
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="240dp"
+        android:layout_height="42dp"
+        app:layout_constraintTop_toTopOf="@+id/guideline2"
+        app:layout_constraintLeft_toRightOf="@+id/rating"
+        app:layout_constraintRight_toRightOf="@+id/imageView"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintBottom_toBottomOf="@+id/rating"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/rating"
+        android:layout_width="100dp"
+        android:layout_height="42dp"
+        android:text="Rating"
+        android:textSize="16dp"
+        app:layout_constraintLeft_toLeftOf="@+id/imageView"
+        android:layout_marginLeft="0dp"
+        app:layout_constraintTop_toTopOf="@+id/guideline2"
+        android:layout_marginTop="0dp" />
+
+</android.support.constraint.ConstraintLayout>
