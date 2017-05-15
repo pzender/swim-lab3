@@ -26,10 +26,10 @@ public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     private List<Movie> moviesList;
     private final int LEFT = 0, RIGHT = 1;
 
-    public class MyViewHolderLTR extends RecyclerView.ViewHolder{
+    public abstract class MyViewHolder extends RecyclerView.ViewHolder{
         public TextView title, year, genre;
         public ImageView poster;
-        public MyViewHolderLTR(View view){
+        public MyViewHolder(View view){
             super(view);
             title = (TextView)view.findViewById(R.id.title);
             genre = (TextView)view.findViewById(R.id.genre);
@@ -38,15 +38,17 @@ public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         }
     }
 
-    public class MyViewHolderRTL extends RecyclerView.ViewHolder{
+    public class MyViewHolderLTR extends MyViewHolder{
+        public MyViewHolderLTR(View view){
+            super(view);
+        }
+    }
+
+    public class MyViewHolderRTL extends MyViewHolder{
         public TextView title, year, genre;
         public ImageView poster;
         public MyViewHolderRTL(View view){
             super(view);
-            title = (TextView)view.findViewById(R.id.title);
-            genre = (TextView)view.findViewById(R.id.genre);
-            year = (TextView)view.findViewById(R.id.year);
-            poster = (ImageView)view.findViewById(R.id.screen);
         }
     }
 
@@ -74,25 +76,19 @@ public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position){ //PASKUDNE! Zrób coś z tym bo wiocha
-
+        MyViewHolder temp = (MyViewHolder) holder;
+        Movie movie = moviesList.get(position);
+        temp.title.setText(movie.getTitle());
+        temp.genre.setText(movie.getGenre());
+        temp.year.setText(movie.getYear());
+        temp.poster.setImageResource(movie.getPosterID());
         if (holder.getItemViewType() == LEFT){
-            MyViewHolderLTR vhLeft = (MyViewHolderLTR) holder;
-            Movie movie = moviesList.get(position);
-            vhLeft.title.setText(movie.getTitle());
-            vhLeft.genre.setText(movie.getGenre());
-            vhLeft.year.setText(movie.getYear());
-            vhLeft.poster.setImageResource(movie.getPosterID());
+            MyViewHolderLTR vhLeft = (MyViewHolderLTR) temp;
+
         }
         else if (holder.getItemViewType() == RIGHT){
-            MyViewHolderRTL vhRight = (MyViewHolderRTL) holder;
-            Movie movie = moviesList.get(position);
-            vhRight.title.setText(movie.getTitle());
-            vhRight.genre.setText(movie.getGenre());
-            vhRight.year.setText(movie.getYear());
-            vhRight.poster.setImageResource(movie.getPosterID());
+            MyViewHolderRTL vhRight = (MyViewHolderRTL) temp;
         }
-
-
     }
     @Override
     public int getItemCount(){

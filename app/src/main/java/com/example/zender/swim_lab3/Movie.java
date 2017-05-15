@@ -12,14 +12,17 @@ public class Movie implements Serializable{
 
     private String title, genre, year;
     private boolean watched;
-    private int rating;
+    private float rating;
     private int posterID;
+    private int screenID;
 
-    public Movie(String title, String genre, String year, int posterID){
+    public Movie(String title, String genre, String year, int screenID, int posterID){
         this.title = title;
         this.genre = genre;
         this.year = year;
         this.posterID = posterID;
+        this.screenID = screenID;
+        rating = 0;
     }
 
 
@@ -48,23 +51,25 @@ public class Movie implements Serializable{
         this.year = year;
     }
 
-    public boolean isWatched() {
-        return watched;
-    }
-
     public void setWatched(boolean watched) {
         this.watched = watched;
     }
 
-    public int getRating() {
+    public float getRating() {
         return rating;
     }
 
-    public void setRating(int rating) {
+    public void setRating(float rating) {
         this.rating = rating;
     }
 
     public int getPosterID() {
         return posterID;
     }
+
+    public int getScreenID() { return screenID; }
+
+    public void setScreenID(int screenID) { this.screenID = screenID; }
+
+    public boolean getWatched() { return watched; }
 }

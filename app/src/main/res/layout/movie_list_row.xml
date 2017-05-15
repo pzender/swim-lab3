@@ -16,6 +16,15 @@
         android:layout_width="30dp"
         android:layout_height="50dp"
         android:layout_marginRight="10dp" />
+    <ImageView
+        android:id="@+id/eye"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/eye_empty"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+
+        />
     <TextView
         android:id="@+id/title"
         android:textColor="@color/title"
