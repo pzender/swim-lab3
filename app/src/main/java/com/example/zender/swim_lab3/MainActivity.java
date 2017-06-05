@@ -19,15 +19,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    private List<Movie> movieList = new ArrayList<>();
+    public static List<Movie> movieList = new ArrayList<>();
     private RecyclerView recyclerView;
     private MoviesAdapter moviesAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         moviesAdapter = new MoviesAdapter(movieList);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
@@ -38,13 +36,11 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), recyclerView, new RecyclerTouchListener.ClickListener() {
             @Override
             public void onClick(View view, int position) {
-                Movie movie = movieList.get(position);
-                launchDetails(movie);
+                launchDetails(position);
             }
             @Override
             public void onLongClick(View view, int position) {
                 Movie movie = movieList.get(position);
-                Toast.makeText(getApplicationContext(), movie.getTitle()+" is long-clicked!", Toast.LENGTH_SHORT).show();
                 movie.setWatched(!movie.getWatched());
                 ImageView eye = (ImageView)view.findViewById(R.id.eye);
                 eye.setImageResource(movie.getWatched() ? R.drawable.eye_full : R.drawable.eye_empty);
@@ -64,7 +60,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
                 int swipedPos = viewHolder.getAdapterPosition();
-                Toast.makeText(getApplicationContext(), movieList.get(swipedPos).getTitle()+" is swiped!", Toast.LENGTH_SHORT).show();
                 movieList.remove(swipedPos);
                 moviesAdapter.notifyDataSetChanged();
 
@@ -75,9 +70,9 @@ public class MainActivity extends AppCompatActivity {
         itemTouchHelper.attachToRecyclerView(recyclerView);
     }
 
-    private void launchDetails(Movie chosenMovie){
+    private void launchDetails(int positionOfChosenMovie){
         Intent detailsIntent = new Intent(this, MovieDetailsActivity.class);
-        detailsIntent.putExtra("Movie", chosenMovie);
+        detailsIntent.putExtra("position", positionOfChosenMovie);
         startActivityForResult(detailsIntent, 0);
     }
 
@@ -89,10 +84,9 @@ public class MainActivity extends AppCompatActivity {
                 String recent = data.getStringExtra("title");
                 for (int i = 0 ; i > movieList.size() ; i++){
                     Movie look = movieList.get(i);
-                    if (look.getTitle() == recent)
+                    if (look.getTitle().equals(recent))
                         look.setRating(rating);
                 }
-                Toast.makeText(getApplicationContext(), "Details returned with rating "+rating, Toast.LENGTH_SHORT).show();
             }
         }
         super.onActivityResult(requestCode, resultCode, data);

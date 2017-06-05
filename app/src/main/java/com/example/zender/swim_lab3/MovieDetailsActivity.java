@@ -13,20 +13,11 @@ public class MovieDetailsActivity extends AppCompatActivity {
     Movie chosenMovie;
     RatingBar ratingBar;
 
-/*
-    private View.OnClickListener ratingBarListener = new View.OnClickListener(){
-
-        @Override
-        public void onClick(View v) {
-            ratingBar.getNumStars();
-        }
-    };
-*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_details);
-        chosenMovie = (Movie)getIntent().getSerializableExtra("Movie");
+        chosenMovie = MainActivity.movieList.get(getIntent().getIntExtra("position", 0));
         ImageView screen = (ImageView)findViewById(R.id.imageView);
         screen.setImageResource(chosenMovie.getScreenID());
 
