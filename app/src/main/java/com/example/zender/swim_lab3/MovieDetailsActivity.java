@@ -1,49 +1,45 @@
 package com.example.zender.swim_lab3;
 
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.net.Uri;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MovieDetailsActivity extends AppCompatActivity {
-    Movie chosenMovie;
-    RatingBar ratingBar;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
+public class MovieDetailsActivity extends AppCompatActivity
+    implements MovieDetailsFragment.OnPictureClicked {
+    int chosenMoviePosition;
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        chosenMoviePosition = getIntent().getIntExtra("position", 0);
+        Configuration config = getResources().getConfiguration();
+
+        //android.app.FragmentManager fragmentManager = getFragmentManager();
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.det_frag, MovieDetailsFragment.newInstance(chosenMoviePosition))
+                .commit();
         setContentView(R.layout.activity_movie_details);
-        chosenMovie = MainActivity.movieList.get(getIntent().getIntExtra("position", 0));
-        ImageView screen = (ImageView)findViewById(R.id.imageView);
-        screen.setImageResource(chosenMovie.getScreenID());
-
-
-        TextView title = (TextView)findViewById(R.id.title);
-        title.setText(chosenMovie.getTitle());
-        ratingBar = (RatingBar)findViewById(R.id.ratingBar);
-        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-            @Override
-            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                chosenMovie.setRating(rating);
-                Toast.makeText(getApplicationContext(), "Rating changed to "+rating, Toast.LENGTH_SHORT).show();
-            }
-        });
-        ratingBar.setRating(chosenMovie.getRating());
-        Toast.makeText(getApplicationContext(), "Current rating: "+chosenMovie.getRating(), Toast.LENGTH_SHORT).show();
-        //TextView
     }
 
     @Override
-    public void onBackPressed() {
-        Intent back = new Intent();
-        back.putExtra("rating", chosenMovie.getRating());
-        back.putExtra("title", chosenMovie.getTitle());
-        setResult(RESULT_OK, back);
-        super.onBackPressed();
+    public void onPictureClicked() {
+        Toast.makeText(this, "Picture clicked!", Toast.LENGTH_SHORT).show();
+        final LotsaPicturesFragment lotsaPicturesFragment = LotsaPicturesFragment.newInstance();
+        //getSupportFragmentManager().
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.det_frag, lotsaPicturesFragment)
+                .addToBackStack(null)
+                .commit();
     }
-
 }

@@ -6,11 +6,16 @@
     tools:context="com.example.zender.swim_lab3.MovieDetailsActivity"
     tools:layout_editor_absoluteY="81dp"
     tools:layout_editor_absoluteX="0dp"
-    android:orientation="vertical"
-    android:id="@+id/det_root">
+    android:id="@+id/two_fragments"
+    android:orientation="vertical">
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="0"
-        android:id="@+id/det_frag"/>
+        android:id="@+id/add_top"
+        android:layout_weight="2"/>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/add_bot"
+        android:layout_weight="3"/>
 </LinearLayout>
