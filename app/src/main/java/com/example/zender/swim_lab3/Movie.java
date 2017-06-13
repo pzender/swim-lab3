@@ -3,6 +3,8 @@ package com.example.zender.swim_lab3;
 import android.graphics.drawable.Drawable;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Przemek on 2017-04-24.
@@ -15,6 +17,8 @@ public class Movie implements Serializable{
     private float rating;
     private int posterID;
     private int screenID;
+    private List<Actor> actors = new ArrayList<>();
+    private List<Integer> pictureIDs = new ArrayList<>();
 
     public Movie(String title, String genre, String year, int screenID, int posterID){
         this.title = title;
@@ -23,9 +27,30 @@ public class Movie implements Serializable{
         this.posterID = posterID;
         this.screenID = screenID;
         rating = 0;
+        actors = prepActors();
+        pictureIDs = prepPicIDs();
     }
 
+    private List<Actor> prepActors(){
+        List<Actor> list = new ArrayList<>();
+        Actor act = new Actor("Scarlett Johansson", R.drawable.scarjo);
+        list.add(act);
+        act = new Actor("Robert Downey Jr.", R.drawable.downey);
+        list.add(act);
+        act = new Actor("Hugo Weaving", R.drawable.weaving);
+        return list;
+    }
 
+    private List<Integer> prepPicIDs(){
+        List<Integer> list = new ArrayList<>();
+        list.add(R.drawable.forceawakens_t);
+        list.add(R.drawable.guardians_t);
+        list.add(R.drawable.ironman_t);
+        list.add(R.drawable.raiders_t);
+        list.add(R.drawable.madmax_t);
+        list.add(R.drawable.martian_t);
+        return list;
+    }
 
     public String getTitle() {
         return title;
