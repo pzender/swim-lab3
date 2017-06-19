@@ -6,6 +6,7 @@ import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by Przemek on 2017-04-24.
@@ -35,24 +36,18 @@ public class Movie implements Serializable{
     }
 
     private ArrayList<Actor> prepActors(){
+        Random r = new Random();
         ArrayList<Actor> list = new ArrayList<>();
-        Actor act = new Actor("Scarlett Johansson", R.drawable.scarjo);
-        list.add(act);
-        act = new Actor("Robert Downey Jr.", R.drawable.downey);
-        list.add(act);
-        act = new Actor("Hugo Weaving", R.drawable.weaving);
-        list.add(act);
+        for(int i = 0 ; i < 3 ; i++)
+            list.add(MainActivity.actorList.get(r.nextInt(MainActivity.actorList.size())));
         return list;
     }
 
     private ArrayList<Integer> prepPicIDs(){
+        Random r = new Random();
         ArrayList<Integer> list = new ArrayList<>();
-        list.add(R.drawable.forceawakens_t);
-        list.add(R.drawable.guardians_t);
-        list.add(R.drawable.ironman_t);
-        list.add(R.drawable.raiders_t);
-        list.add(R.drawable.madmax_t);
-        list.add(R.drawable.martian_t);
+        for(int i = 0 ; i < 6 ; i++)
+            list.add(MainActivity.allThumbnails.get(r.nextInt(MainActivity.allThumbnails.size())));
         return list;
     }
 

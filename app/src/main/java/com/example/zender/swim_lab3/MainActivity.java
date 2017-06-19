@@ -20,6 +20,8 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     public static List<Movie> movieList = new ArrayList<>();
+    public static List<Actor> actorList = new ArrayList<>();
+    public static List<Integer> allThumbnails = new ArrayList<>();
     private RecyclerView recyclerView;
     private MoviesAdapter moviesAdapter;
     @Override
@@ -47,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
             }
         }));
         setupSwipe();
+        prepActorData();
+        prepThumbnails();
         prepMovieData();
     }
 
@@ -96,19 +100,10 @@ public class MainActivity extends AppCompatActivity {
         Movie movie = new Movie("Mad Max: Fury Road", "Action & Adventure", "2015", R.drawable.madmax, R.drawable.madmax_t);
         movieList.add(movie);
 
-        movie = new Movie("Inside Out", "Animation, Kids & Family", "2015", R.drawable.insideout, R.drawable.insideout_t);
-        movieList.add(movie);
-
-        movie = new Movie("Star Wars: Episode VII - The Force Awakens", "Action", "2015", R.drawable.forceawakens, R.drawable.forceawakens_t);
-        movieList.add(movie);
-
-        movie = new Movie("Shaun the Sheep", "Animation", "2015", R.drawable.shaunthesheep, R.drawable.shaunthesheep_t);
+        movie = new Movie ("Star Wars: Episode VII - The Force Awakens", "Action", "2015", R.drawable.forceawakens, R.drawable.forceawakens_t);
         movieList.add(movie);
 
         movie = new Movie("The Martian", "Science Fiction & Fantasy", "2015", R.drawable.martian, R.drawable.martian_t);
-        movieList.add(movie);
-
-        movie = new Movie("Mission: Impossible - Rogue Nation", "Action", "2015", R.drawable.roguenation, R.drawable.roguenation_t);
         movieList.add(movie);
 
         movie = new Movie("Up", "Animation", "2009", R.drawable.up, R.drawable.up_t);
@@ -117,16 +112,10 @@ public class MainActivity extends AppCompatActivity {
         movie = new Movie("Star Trek", "Science Fiction", "2009", R.drawable.startrek, R.drawable.startrek_t);
         movieList.add(movie);
 
-        movie = new Movie("The LEGO Movie", "Animation", "2014", R.drawable.legomovie, R.drawable.legomovie_t);
-        movieList.add(movie);
-
         movie = new Movie("Iron Man", "Action & Adventure", "2008", R.drawable.ironman, R.drawable.ironman_t);
         movieList.add(movie);
 
         movie = new Movie("Aliens", "Science Fiction", "1986", R.drawable.aliens, R.drawable.aliens_t);
-        movieList.add(movie);
-
-        movie = new Movie("Chicken Run", "Animation", "2000", R.drawable.chickenrun, R.drawable.chickenrun_t);
         movieList.add(movie);
 
         movie = new Movie("Back to the Future", "Science Fiction", "1985", R.drawable.backtothefuture, R.drawable.backtothefuture_t);
@@ -141,6 +130,50 @@ public class MainActivity extends AppCompatActivity {
         movie = new Movie("Guardians of the Galaxy", "Science Fiction & Fantasy", "2014", R.drawable.guardians, R.drawable.guardians_t);
         movieList.add(movie);
 
+        movie = new Movie("V for Vendetta", "Action, Drama", "2005", R.drawable.v, R.drawable.v_t);
+        movieList.add(movie);
+
+        movie = new Movie("Equilibrium", "Action, Drama, Sci-Fi", "2002", R.drawable.equilibrium, R.drawable.equilibrium_t);
+        movieList.add(movie);
+
+        movie = new Movie("Warcraft", "Action, Adventure, Fantasy", "2016", R.drawable.warcraft, R.drawable.warcraft_t);
+        movieList.add(movie);
+
+        movie = new Movie("The Road", "Adventure, Drama", "2009", R.drawable.road, R.drawable.road_t);
+        movieList.add(movie);
+
+        movie = new Movie("The Lord of the Rings: The Fellowship of the Ring", "Adventure, Fantasy", "2001", R.drawable.fellowship, R.drawable.fellowship_t);
+        movieList.add(movie);
+
         moviesAdapter.notifyDataSetChanged();
     }
+    private void prepActorData(){
+        Actor act = new Actor("Scarlett Johansson", R.drawable.scarjo);
+        actorList.add(act);
+        act = new Actor("Robert Downey Jr.", R.drawable.downey);
+        actorList.add(act);
+        act = new Actor("Hugo Weaving", R.drawable.weaving);
+        actorList.add(act);
+        act = new Actor("Sean Bean", R.drawable.seanbean);
+        actorList.add(act);
+        act = new Actor("Natalie Portman", R.drawable.portman);
+        actorList.add(act);
+        act = new Actor("Viggo Mortensen", R.drawable.viggo);
+        actorList.add(act);
+    }
+
+    private void prepThumbnails(){
+        allThumbnails.add(R.drawable.forceawakens_t);
+        allThumbnails.add(R.drawable.guardians_t);
+        allThumbnails.add(R.drawable.ironman_t);
+        allThumbnails.add(R.drawable.raiders_t);
+        allThumbnails.add(R.drawable.madmax_t);
+        allThumbnails.add(R.drawable.martian_t);
+        allThumbnails.add(R.drawable.v_t);
+        allThumbnails.add(R.drawable.equilibrium_t);
+        allThumbnails.add(R.drawable.fellowship_t);
+        allThumbnails.add(R.drawable.warcraft_t);
+
+    }
+
 }

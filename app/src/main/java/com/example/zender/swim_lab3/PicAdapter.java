@@ -44,7 +44,7 @@ public class PicAdapter extends BaseAdapter {
         ImageView imageView;
         if(convertView == null){
             imageView = new ImageView(context);
-            imageView.setLayoutParams(new GridView.LayoutParams(90,90));
+            imageView.setLayoutParams(new GridView.LayoutParams(200,200));
             imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
             imageView.setPadding(5,5,5,5);
         }
