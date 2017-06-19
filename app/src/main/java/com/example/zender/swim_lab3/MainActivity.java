@@ -173,7 +173,7 @@ public class MainActivity extends AppCompatActivity {
         allThumbnails.add(R.drawable.equilibrium_t);
         allThumbnails.add(R.drawable.fellowship_t);
         allThumbnails.add(R.drawable.warcraft_t);
-
+        allThumbnails.add(R.drawable.road_t);
     }
 
 }
