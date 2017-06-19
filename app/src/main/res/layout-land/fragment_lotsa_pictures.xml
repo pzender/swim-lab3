@@ -6,7 +6,6 @@
     tools:context="com.example.zender.swim_lab3.MovieDetailsActivity"
     tools:layout_editor_absoluteY="81dp"
     tools:layout_editor_absoluteX="0dp"
-    android:orientation="vertical"
     android:id="@+id/two_fragments">
     <FrameLayout
         android:layout_width="match_parent"

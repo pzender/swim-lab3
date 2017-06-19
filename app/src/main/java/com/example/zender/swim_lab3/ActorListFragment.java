@@ -33,7 +33,6 @@ public class ActorListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_actor_list, container, false);
-        final Activity activity = getActivity();
         list = (ListView)view.findViewById(R.id.list_view);
         list.setAdapter(new ActorAdapter(getActivity(), (ArrayList) chosenMovie.getActors()));
         return view;

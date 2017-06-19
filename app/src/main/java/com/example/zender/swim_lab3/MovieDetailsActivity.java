@@ -25,9 +25,11 @@ public class MovieDetailsActivity extends AppCompatActivity
         Configuration config = getResources().getConfiguration();
 
         //android.app.FragmentManager fragmentManager = getFragmentManager();
-        getSupportFragmentManager().beginTransaction()
-                .add(R.id.det_frag, MovieDetailsFragment.newInstance(chosenMoviePosition))
-                .commit();
+        if(savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.det_frag, MovieDetailsFragment.newInstance(chosenMoviePosition))
+                    .commit();
+        }
         setContentView(R.layout.activity_movie_details);
     }
 

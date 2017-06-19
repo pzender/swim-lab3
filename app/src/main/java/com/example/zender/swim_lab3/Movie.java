@@ -41,6 +41,7 @@ public class Movie implements Serializable{
         act = new Actor("Robert Downey Jr.", R.drawable.downey);
         list.add(act);
         act = new Actor("Hugo Weaving", R.drawable.weaving);
+        list.add(act);
         return list;
     }
 
