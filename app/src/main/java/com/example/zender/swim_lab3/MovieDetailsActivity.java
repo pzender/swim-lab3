@@ -34,7 +34,7 @@ public class MovieDetailsActivity extends AppCompatActivity
     @Override
     public void onPictureClicked() {
         Toast.makeText(this, "Picture clicked!", Toast.LENGTH_SHORT).show();
-        final LotsaPicturesFragment lotsaPicturesFragment = LotsaPicturesFragment.newInstance();
+        final LotsaPicturesFragment lotsaPicturesFragment = LotsaPicturesFragment.newInstance(chosenMoviePosition);
         //getSupportFragmentManager().
         getSupportFragmentManager()
                 .beginTransaction()

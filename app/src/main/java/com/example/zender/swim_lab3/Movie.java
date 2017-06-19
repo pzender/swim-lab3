@@ -3,6 +3,7 @@ package com.example.zender.swim_lab3;
 import android.graphics.drawable.Drawable;
 
 import java.io.Serializable;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,8 +18,10 @@ public class Movie implements Serializable{
     private float rating;
     private int posterID;
     private int screenID;
-    private List<Actor> actors = new ArrayList<>();
-    private List<Integer> pictureIDs = new ArrayList<>();
+    private ArrayList<Actor> actors = new ArrayList<>();
+    private ArrayList<Integer> pictureIDs = new ArrayList<>();
+
+
 
     public Movie(String title, String genre, String year, int screenID, int posterID){
         this.title = title;
@@ -31,8 +34,8 @@ public class Movie implements Serializable{
         pictureIDs = prepPicIDs();
     }
 
-    private List<Actor> prepActors(){
-        List<Actor> list = new ArrayList<>();
+    private ArrayList<Actor> prepActors(){
+        ArrayList<Actor> list = new ArrayList<>();
         Actor act = new Actor("Scarlett Johansson", R.drawable.scarjo);
         list.add(act);
         act = new Actor("Robert Downey Jr.", R.drawable.downey);
@@ -41,8 +44,8 @@ public class Movie implements Serializable{
         return list;
     }
 
-    private List<Integer> prepPicIDs(){
-        List<Integer> list = new ArrayList<>();
+    private ArrayList<Integer> prepPicIDs(){
+        ArrayList<Integer> list = new ArrayList<>();
         list.add(R.drawable.forceawakens_t);
         list.add(R.drawable.guardians_t);
         list.add(R.drawable.ironman_t);
@@ -97,4 +100,12 @@ public class Movie implements Serializable{
     public void setScreenID(int screenID) { this.screenID = screenID; }
 
     public boolean getWatched() { return watched; }
+
+    public List<Actor> getActors() {
+        return actors;
+    }
+
+    public List<Integer> getPictureIDs() {
+        return pictureIDs;
+    }
 }
